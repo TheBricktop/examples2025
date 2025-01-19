@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="examples2025"
-run/main_scene="res://main.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SceneLoader="*res://scenes/scene_loader.tscn"
 
 [layer_names]
 
