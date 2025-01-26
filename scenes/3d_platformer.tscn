@@ -1,0 +1,81 @@
+[gd_scene load_steps=15 format=3 uid="uid://baddssbwx362r"]
+
+[ext_resource type="Shader" path="res://scenes/postprocess.gdshader" id="1_c6egg"]
+[ext_resource type="Shader" uid="uid://pm4aellm8x6r" path="res://scenes/colorizer.tres" id="1_g27gb"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_iy1n5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5y4y"]
+shader = ExtResource("1_g27gb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w564l"]
+shader = ExtResource("1_c6egg")
+shader_parameter/fog_color = null
+shader_parameter/resolution_downsampling = 2.0
+shader_parameter/bit_depth = 4.0
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hss0h"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_v3osn"]
+sky_material = SubResource("ProceduralSkyMaterial_hss0h")
+
+[sub_resource type="Environment" id="Environment_rninh"]
+background_mode = 2
+sky = SubResource("Sky_v3osn")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_h5gdo"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x0jtu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7lx4l"]
+color_ramp = SubResource("Gradient_h5gdo")
+noise = SubResource("FastNoiseLite_x0jtu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4dou"]
+albedo_texture = SubResource("NoiseTexture2D_7lx4l")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ylbtw"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2fbti"]
+data = PackedVector3Array(-50, 0.5, 50, 50, 0.5, 50, -50, -0.5, 50, 50, 0.5, 50, 50, -0.5, 50, -50, -0.5, 50, 50, 0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, 0.5, -50, -50, -0.5, -50, 50, -0.5, -50, 50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, -50, 50, -0.5, -50, 50, -0.5, 50, -50, 0.5, -50, -50, 0.5, 50, -50, -0.5, -50, -50, 0.5, 50, -50, -0.5, 50, -50, -0.5, -50, 50, 0.5, 50, -50, 0.5, 50, 50, 0.5, -50, -50, 0.5, 50, -50, 0.5, -50, 50, 0.5, -50, -50, -0.5, 50, 50, -0.5, 50, -50, -0.5, -50, 50, -0.5, 50, 50, -0.5, -50, -50, -0.5, -50)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_r5y4y")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Postprocess_dither_" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_w564l")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rninh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.630094, 0)
+material_override = SubResource("StandardMaterial3D_g4dou")
+mesh = SubResource("BoxMesh_ylbtw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2fbti")
+
+[node name="Character" parent="." instance=ExtResource("1_iy1n5")]

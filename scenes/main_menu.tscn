@@ -1,20 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhryjh8kua87w"]
+[gd_scene load_steps=4 format=3 uid="uid://dhryjh8kua87w"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_hjx1y"]
-
-[sub_resource type="Gradient" id="Gradient_uh1m3"]
-colors = PackedColorArray(0, 0.596078, 1, 1, 0, 0.788235, 1, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tiwnj"]
-noise_type = 0
-cellular_jitter = 0.0
-cellular_return_type = 6
-domain_warp_enabled = true
-domain_warp_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_el5yy"]
-color_ramp = SubResource("Gradient_uh1m3")
-noise = SubResource("FastNoiseLite_tiwnj")
+[ext_resource type="PackedScene" uid="uid://bvhoe66xinbg5" path="res://scenes/2d_platform.tscn" id="2_yeud8"]
+[ext_resource type="PackedScene" uid="uid://baddssbwx362r" path="res://scenes/3d_platformer.tscn" id="3_5fkvx"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,22 +12,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hjx1y")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("NoiseTexture2D_el5yy")
+platform2dScene = ExtResource("2_yeud8")
+platform3dScene = ExtResource("3_5fkvx")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 offset_left = 200.0
 offset_top = 155.0
 offset_right = 504.0
-offset_bottom = 527.0
+offset_bottom = 267.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
@@ -51,12 +32,11 @@ theme_override_constants/h_separation = 60
 text = "2d platformer level example
 "
 
-[node name="playButton2" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="3d_pltfrm_btn" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/h_separation = 60
-text = "play
-"
+text = "3d platformer level example"
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 visible = false
@@ -88,4 +68,5 @@ offset_bottom = 150.0
 theme_override_font_sizes/font_size = 56
 text = "Examples //:"
 
-[connection signal="button_down" from="PanelContainer/VBoxContainer/2d_pltfrm_btn" to="." method="_on_d_pltfrm_btn_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/2d_pltfrm_btn" to="." method="_on_2d_pltfrm_btn_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/3d_pltfrm_btn" to="." method="_on_3d_pltfrm_btn_button_down"]

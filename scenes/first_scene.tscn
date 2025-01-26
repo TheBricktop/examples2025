@@ -1,0 +1,124 @@
+[gd_scene load_steps=19 format=3 uid="uid://crcq0w6gnoujk"]
+
+[ext_resource type="Script" path="res://scenes/rotate_pivot.gd" id="1_st12x"]
+[ext_resource type="PackedScene" uid="uid://dhryjh8kua87w" path="res://scenes/main_menu.tscn" id="2_mynvo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sfb6r"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_y65g1"]
+sky_material = SubResource("ProceduralSkyMaterial_sfb6r")
+
+[sub_resource type="Environment" id="Environment_nwons"]
+background_mode = 2
+sky = SubResource("Sky_y65g1")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_v5fna"]
+colors = PackedColorArray(0, 0.26907, 0, 1, 0.579203, 0.712759, 0.269307, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_iu6k2"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6oodd"]
+seamless = true
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_v5fna")
+noise = SubResource("FastNoiseLite_iu6k2")
+
+[sub_resource type="Gradient" id="Gradient_brkkt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p3u7x"]
+seamless = true
+seamless_blend_skirt = 1.0
+as_normal_map = true
+color_ramp = SubResource("Gradient_brkkt")
+noise = SubResource("FastNoiseLite_iu6k2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iveg6"]
+albedo_texture = SubResource("NoiseTexture2D_6oodd")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_p3u7x")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_drwl5"]
+top_radius = 5.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at62t"]
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_gy3hh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8frxg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkm77"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l14j0"]
+albedo_color = Color(6.73831e-06, 0.672988, 0.845319, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgqmv"]
+albedo_color = Color(1, 0.380392, 0.152941, 1)
+
+[node name="FirstScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nwons")
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+
+[node name="pivot" type="Node3D" parent="."]
+script = ExtResource("1_st12x")
+speed = 0.1
+
+[node name="Camera3D" type="Camera3D" parent="pivot"]
+transform = Transform3D(0.917766, -0.218595, 0.331544, 0, 0.834869, 0.550449, -0.397121, -0.505184, 0.766214, 3.26294, 4.16991, 6.24622)
+
+[node name="map" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.99031, 0)
+material_override = SubResource("StandardMaterial3D_iveg6")
+mesh = SubResource("CylinderMesh_drwl5")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="map"]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_at62t")
+mesh = SubResource("SphereMesh_gy3hh")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="map"]
+transform = Transform3D(2.53154, 0, 0, 0, 2.53154, 0, 0, 0, 2.53154, 2.807, 0.7, 0)
+material_override = SubResource("StandardMaterial3D_8frxg")
+mesh = SubResource("SphereMesh_gy3hh")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="map"]
+transform = Transform3D(4.93437, 0, 0, 0, 4.93437, 0, 0, 0, 4.93437, -3.3545, 0.7, 2.0227)
+material_override = SubResource("StandardMaterial3D_gkm77")
+mesh = SubResource("SphereMesh_gy3hh")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="map"]
+transform = Transform3D(2.26349, 0, 0, 0, 2.26349, 0, 0, 0, 2.26349, -2.84536, -0.407064, -2.944)
+material_override = SubResource("StandardMaterial3D_l14j0")
+mesh = SubResource("SphereMesh_gy3hh")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="map"]
+transform = Transform3D(1.18259, 0, 0, 0, 1.18259, 0, 0, 0, 1.18259, 2.53639, 0.0929361, -2.944)
+material_override = SubResource("StandardMaterial3D_pgqmv")
+mesh = SubResource("SphereMesh_gy3hh")
+skeleton = NodePath("../../..")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_mynvo")]
