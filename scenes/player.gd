@@ -6,6 +6,7 @@ var currentState : state = state.idle
 @export var JUMP_VELOCITY = -400.0
 @onready var jump_timer: Timer = $JumpTimer
 var jumping  : bool = false
+@onready var dust: GPUParticles2D = $dust
 
 @onready var sprite: Node2D = $sprite_root
 

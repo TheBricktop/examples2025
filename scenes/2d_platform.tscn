@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://bvhoe66xinbg5"]
+[gd_scene load_steps=10 format=4 uid="uid://bvhoe66xinbg5"]
 
 [ext_resource type="Texture2D" uid="uid://vecy7kldwbvo" path="res://art/kenney_pixel-platformer/Tilemap/tilemap-backgrounds.png" id="1_ynbgp"]
 [ext_resource type="Texture2D" uid="uid://bu1q2wjt5m7p8" path="res://art/kenney_pixel-platformer/Tilemap/tilemap.png" id="2_fyjb6"]
 [ext_resource type="PackedScene" uid="uid://dsshpxxdasln2" path="res://scenes/player.tscn" id="3_3t3ci"]
-[ext_resource type="Texture2D" uid="uid://hybnjy1bohsv" path="res://art/kenney_pixel-platformer/Tiles/tile_0008.png" id="4_6ue4i"]
+[ext_resource type="Texture2D" uid="uid://dpyeydg3mv8m2" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0004.png" id="4_qiehx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erk35"]
 texture = ExtResource("1_ynbgp")
@@ -371,24 +371,8 @@ tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_sf5cw")
 
-[sub_resource type="Curve" id="Curve_k4j5p"]
-_data = [Vector2(0.0733333, 0), 0.0, 1.81887, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_16w4m"]
-curve = SubResource("Curve_k4j5p")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ggl7v"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 1.0
-angle_min = -75.2
-angle_max = 46.5
-gravity = Vector3(0, 98, 0)
-scale_curve = SubResource("CurveTexture_16w4m")
-collision_mode = 1
-collision_friction = 0.0
-collision_bounce = 0.08
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uynh3"]
+size = Vector2(37, 36)
 
 [node name="2d_platform" type="Node2D"]
 
@@ -408,7 +392,14 @@ tile_set = SubResource("TileSet_1nfbg")
 SPEED = 150.0
 JUMP_VELOCITY = -300.0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(-80, -6)
-process_material = SubResource("ParticleProcessMaterial_ggl7v")
-texture = ExtResource("4_6ue4i")
+[node name="Trigger2d" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger2d"]
+position = Vector2(-169.5, 4)
+shape = SubResource("RectangleShape2D_uynh3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trigger2d/CollisionShape2D"]
+texture_filter = 1
+position = Vector2(-6.5, 6)
+scale = Vector2(-1, 1)
+texture = ExtResource("4_qiehx")
