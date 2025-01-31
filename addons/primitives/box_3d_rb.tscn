@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxkbbc2ntnmx2"]
+
+[ext_resource type="Script" path="res://addons/primitives/box_3d_rb.gd" id="1_ml2ru"]
+
+[node name="Box3d_rb" type="RigidBody3D"]
+script = ExtResource("1_ml2ru")

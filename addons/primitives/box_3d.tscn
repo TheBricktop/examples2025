@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3gcad0yx6elx"]
+
+[ext_resource type="Script" path="res://addons/primitives/box_3d.gd" id="1_gknls"]
+
+[sub_resource type="Gradient" id="Gradient_f8oew"]
+colors = PackedColorArray(0.221496, 0.25, 0.125, 1, 0.1875, 0.399581, 0.75, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gake1"]
+seed = 2202
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jada2"]
+seamless = true
+color_ramp = SubResource("Gradient_f8oew")
+noise = SubResource("FastNoiseLite_gake1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kphw"]
+albedo_texture = SubResource("NoiseTexture2D_jada2")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_t11xy"]
+
+[node name="Box3D" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_2kphw")
+mesh = SubResource("BoxMesh_t11xy")
+script = ExtResource("1_gknls")
+create_random_texture = null
