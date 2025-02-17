@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://jp46se73m6xn"]
+
+[ext_resource type="PackedScene" uid="uid://dygn3ux5e4fc3" path="res://old_wooden_door_wbmgdcpdw_high.glb" id="1_r6prl"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_r6prl")]

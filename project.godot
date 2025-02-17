@@ -8,6 +8,10 @@
 
 config_version=5
 
+[addons]
+
+markdown_book/docs_folder=""
+
 [application]
 
 config/name="examples2025"
@@ -21,7 +25,7 @@ SceneLoader="*res://scenes/scene_loader.tscn"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/markdown_book/plugin.cfg", "res://addons/markdownlabel/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [input]
 

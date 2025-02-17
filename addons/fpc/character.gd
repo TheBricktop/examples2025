@@ -81,6 +81,8 @@ extends CharacterBody3D
 ## Use with caution.
 @export var gravity_enabled : bool = true
 
+@onready var mesh: MeshInstance3D = $Mesh
+
 
 # Member variables
 var speed : float = base_speed
@@ -245,6 +247,8 @@ func handle_head_rotation():
 		HEAD.rotation_degrees.x -= mouseInput.y * mouse_sensitivity * -1.0
 	else:
 		HEAD.rotation_degrees.x -= mouseInput.y * mouse_sensitivity
+	
+	mesh.rotation.y = lerp(mesh.rotation.y,HEAD.rotation.y,.1)
 	
 	# Uncomment for controller support
 	#var controller_view_rotation = Input.get_vector(LOOK_DOWN, LOOK_UP, LOOK_RIGHT, LOOK_LEFT) * controller_sensitivity # These are inverted because of the nature of 3D rotation.

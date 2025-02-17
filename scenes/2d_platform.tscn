@@ -380,6 +380,7 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [node name="2d_platform" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Background" type="TileMapLayer" parent="."]
 texture_filter = 1

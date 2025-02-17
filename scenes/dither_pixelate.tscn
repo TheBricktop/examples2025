@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckxab2at2kxj4"]
+
+[ext_resource type="Shader" path="res://scenes/dither_color.gdshader" id="1_20ysr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4pwp"]
+shader = ExtResource("1_20ysr")
+shader_parameter/fog_color = null
+shader_parameter/resolution_downsampling = 8.0
+shader_parameter/bit_depth = 8.0
+
+[node name="Dither_pixelate" type="ColorRect"]
+material = SubResource("ShaderMaterial_m4pwp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

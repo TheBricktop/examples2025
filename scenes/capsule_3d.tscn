@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://xa6adur5fqxp"]
+
+[sub_resource type="GDScript" id="GDScript_68ifv"]
+script/source = "extends Node3D
+"
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hk6c3"]
+
+[node name="Casule_3d" type="Node3D"]
+script = SubResource("GDScript_68ifv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_hk6c3")

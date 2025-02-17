@@ -39,7 +39,6 @@ theme_override_constants/h_separation = 60
 text = "3d platformer level example"
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
-visible = false
 layout_direction = 2
 layout_mode = 0
 offset_left = 589.0
@@ -58,6 +57,24 @@ tab_count = 2
 tab_0/title = "LOL"
 tab_1/title = "LOL2"
 metadata/_tab_index = 0
+
+[node name="TabBar2" type="TabBar" parent="PanelContainer2/TabContainer"]
+visible = false
+layout_mode = 2
+current_tab = 0
+tab_count = 2
+tab_0/title = "LOL"
+tab_1/title = "LOL2"
+metadata/_tab_index = 1
+
+[node name="TabBar3" type="TabBar" parent="PanelContainer2/TabContainer"]
+visible = false
+layout_mode = 2
+current_tab = 0
+tab_count = 2
+tab_0/title = "LOL"
+tab_1/title = "LOL2"
+metadata/_tab_index = 2
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 2

@@ -11,10 +11,12 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if !body:
+		return
 # rigidbody interaction
 	for i in body.get_slide_collision_count():
 		var c := body.get_slide_collision(i)
 		var col = c.get_collider()
 		if col is RigidBody3D:
-			col.apply_central_impulse(-c.get_normal() * mass * body.velocity)
+			col.apply_central_impulse(-c.get_normal() * mass * body.velocity.length())
 	pass

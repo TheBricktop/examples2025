@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=26 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
+[ext_resource type="Texture2D" uid="uid://ds4rnuhypjs8a" path="res://addons/shaderV/examples/godot_logo.png" id="2_xa0gc"]
 [ext_resource type="Script" path="res://addons/fpc/EditorModule.gd" id="3_v3ckk"]
 [ext_resource type="Script" path="res://addons/fpc/debug.gd" id="3_x1wcc"]
 
@@ -11,6 +12,7 @@ clearcoat_roughness = 0.2
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jw1de"]
 material = SubResource("StandardMaterial3D_kp17n")
+radius = 0.385
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uy03j"]
 
@@ -148,6 +150,9 @@ _data = {
 "crouch": SubResource("Animation_5ec5e")
 }
 
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_xkgo7"]
+slide_on_slope = true
+
 [sub_resource type="Animation" id="Animation_gh776"]
 resource_name = "RESET"
 length = 0.001
@@ -155,7 +160,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera:position:x")
+tracks/0/path = NodePath("SpringArm3D/Camera:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -166,7 +171,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera:position:y")
+tracks/1/path = NodePath("SpringArm3D/Camera:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -182,7 +187,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera:position:x")
+tracks/0/path = NodePath("SpringArm3D/Camera:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -193,7 +198,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera:position:y")
+tracks/1/path = NodePath("SpringArm3D/Camera:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -209,7 +214,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera:position:x")
+tracks/0/path = NodePath("SpringArm3D/Camera:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -220,7 +225,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera:position:y")
+tracks/1/path = NodePath("SpringArm3D/Camera:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -241,7 +246,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera:rotation")
+tracks/0/path = NodePath("SpringArm3D/Camera:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -253,7 +258,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera:position")
+tracks/1/path = NodePath("SpringArm3D/Camera:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -269,7 +274,7 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera:rotation")
+tracks/0/path = NodePath("SpringArm3D/Camera:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -285,7 +290,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera:rotation")
+tracks/0/path = NodePath("SpringArm3D/Camera:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -297,7 +302,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera:position")
+tracks/1/path = NodePath("SpringArm3D/Camera:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -313,7 +318,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera:rotation")
+tracks/0/path = NodePath("SpringArm3D/Camera:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -325,7 +330,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera:position")
+tracks/1/path = NodePath("SpringArm3D/Camera:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -343,6 +348,44 @@ _data = {
 "land_right": SubResource("Animation_vsknp")
 }
 
+[sub_resource type="Animation" id="Animation_24i4t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x2cay"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.1, 1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tlywv"]
+_data = {
+"RESET": SubResource("Animation_24i4t"),
+"new_animation": SubResource("Animation_x2cay")
+}
+
 [sub_resource type="Theme" id="Theme_wdf0f"]
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
@@ -355,7 +398,7 @@ MarginContainer/constants/margin_top = 10
 script = ExtResource("1_0t4e8")
 default_reticle = "res://addons/fpc/reticles/reticle_1.tscn"
 HEAD = NodePath("Head")
-CAMERA = NodePath("Head/Camera")
+CAMERA = NodePath("Head/SpringArm3D/Camera")
 HEADBOB_ANIMATION = NodePath("Head/HeadbobAnimation")
 JUMP_ANIMATION = NodePath("Head/JumpAnimation")
 CROUCH_ANIMATION = NodePath("CrouchAnimation")
@@ -364,6 +407,16 @@ COLLISION_MESH = NodePath("Collision")
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_jw1de")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.010791, -1.05447)
+remote_path = NodePath("../../StairSlider")
+update_scale = false
+
+[node name="Sprite3D" type="Sprite3D" parent="Mesh"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0.989209, -0.531125)
+billboard = 1
+texture = ExtResource("2_xa0gc")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -374,10 +427,15 @@ libraries = {
 "": SubResource("AnimationLibrary_5e5t5")
 }
 
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.989209, -1.05447)
+
+[node name="StairSlider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.989209, -1.05447)
+shape = SubResource("SeparationRayShape3D_xkgo7")
+
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-
-[node name="Camera" type="Camera3D" parent="Head"]
 
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {
@@ -390,6 +448,22 @@ libraries = {
 "": SubResource("AnimationLibrary_qeg5r")
 }
 speed_scale = 4.0
+
+[node name="Label3D" type="Label3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.423)
+pixel_size = 0.01
+text = "👀"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Label3D"]
+libraries = {
+"": SubResource("AnimationLibrary_tlywv")
+}
+autoplay = "new_animation"
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Head"]
+
+[node name="Camera" type="Camera3D" parent="Head/SpringArm3D"]
+near = 0.51
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
