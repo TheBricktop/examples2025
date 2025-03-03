@@ -1,4 +1,2 @@
-# Godot examples 2025
-## animation studio
-
-- Those are starter scenes with menu that accelerate creation of Your games
+# examples2025
+ godot examples for animation studio 

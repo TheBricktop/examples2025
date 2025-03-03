@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://rvv5hukq4usi"]
+
+[ext_resource type="Script" path="res://npc_base.gd" id="1_5afho"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i80k5"]
+radius = 0.1
+
+[node name="NPC_Base" type="CharacterBody3D"]
+script = ExtResource("1_5afho")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_i80k5")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

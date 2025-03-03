@@ -1,22 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://baddssbwx362r"]
+[gd_scene load_steps=19 format=3 uid="uid://baddssbwx362r"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_iy1n5"]
-[ext_resource type="Shader" uid="uid://pm4aellm8x6r" path="res://scenes/colorizer.tres" id="1_lnqnw"]
-[ext_resource type="Script" path="res://scenes/random_gradient.gd" id="2_tfxg0"]
 [ext_resource type="PackedScene" uid="uid://cg2sjyeu51ma1" path="res://addons/primitives/push_module.tscn" id="4_l3sam"]
-
-[sub_resource type="Gradient" id="Gradient_dr00i"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.254098, 0.590164, 0.778689)
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 6.73831e-07, 0.60787, 0.730445, 1, 1, 0, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_q0i60"]
-gradient = SubResource("Gradient_dr00i")
-width = 4
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vay8"]
-shader = ExtResource("1_lnqnw")
-shader_parameter/Gradient = SubResource("GradientTexture1D_q0i60")
+[ext_resource type="Script" path="res://scenes/drzwi.gd" id="5_id0ww"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hss0h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -32,15 +18,18 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_h5gdo"]
+colors = PackedColorArray(0, 0.407843, 0, 1, 0.27213, 0.471057, 0.216264, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_x0jtu"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7lx4l"]
+seamless = true
 color_ramp = SubResource("Gradient_h5gdo")
 noise = SubResource("FastNoiseLite_x0jtu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4dou"]
 albedo_texture = SubResource("NoiseTexture2D_7lx4l")
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_ylbtw"]
 size = Vector3(100, 1, 100)
@@ -48,18 +37,52 @@ size = Vector3(100, 1, 100)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2fbti"]
 data = PackedVector3Array(-50, 0.5, 50, 50, 0.5, 50, -50, -0.5, 50, 50, 0.5, 50, 50, -0.5, 50, -50, -0.5, 50, 50, 0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, 0.5, -50, -50, -0.5, -50, 50, -0.5, -50, 50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, -50, 50, -0.5, -50, 50, -0.5, 50, -50, 0.5, -50, -50, 0.5, 50, -50, -0.5, -50, -50, 0.5, 50, -50, -0.5, 50, -50, -0.5, -50, 50, 0.5, 50, -50, 0.5, 50, 50, 0.5, -50, -50, 0.5, 50, -50, 0.5, -50, 50, 0.5, -50, -50, -0.5, 50, 50, -0.5, 50, -50, -0.5, -50, 50, -0.5, 50, 50, -0.5, -50, -50, -0.5, -50)
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_eg2li"]
+size = Vector3(2.90869, 4.32861, 1)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-texture_filter = 1
-material = SubResource("ShaderMaterial_3vay8")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("2_tfxg0")
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_68w1v"]
+data = PackedVector3Array(-1.4543, 2.1643, 0.5, 1.4543, 2.1643, 0.5, -1.4543, -2.1643, 0.5, 1.4543, 2.1643, 0.5, 1.4543, -2.1643, 0.5, -1.4543, -2.1643, 0.5, 1.4543, 2.1643, -0.5, -1.4543, 2.1643, -0.5, 1.4543, -2.1643, -0.5, -1.4543, 2.1643, -0.5, -1.4543, -2.1643, -0.5, 1.4543, -2.1643, -0.5, 1.4543, 2.1643, 0.5, 1.4543, 2.1643, -0.5, 1.4543, -2.1643, 0.5, 1.4543, 2.1643, -0.5, 1.4543, -2.1643, -0.5, 1.4543, -2.1643, 0.5, -1.4543, 2.1643, -0.5, -1.4543, 2.1643, 0.5, -1.4543, -2.1643, -0.5, -1.4543, 2.1643, 0.5, -1.4543, -2.1643, 0.5, -1.4543, -2.1643, -0.5, 1.4543, 2.1643, 0.5, -1.4543, 2.1643, 0.5, 1.4543, 2.1643, -0.5, -1.4543, 2.1643, 0.5, -1.4543, 2.1643, -0.5, 1.4543, 2.1643, -0.5, -1.4543, -2.1643, 0.5, 1.4543, -2.1643, 0.5, -1.4543, -2.1643, -0.5, 1.4543, -2.1643, 0.5, 1.4543, -2.1643, -0.5, -1.4543, -2.1643, -0.5)
+
+[sub_resource type="Animation" id="Animation_b5syo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k0l0t"]
+resource_name = "otwieranie"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxbmo"]
+_data = {
+"RESET": SubResource("Animation_b5syo"),
+"otwieranie": SubResource("Animation_k0l0t")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ck52i"]
+size = Vector3(2.90869, 4.32861, 1)
+
+[node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rninh")
@@ -80,6 +103,7 @@ shape = SubResource("ConcavePolygonShape3D_2fbti")
 
 [node name="Character" parent="." instance=ExtResource("1_iy1n5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4268, 0, -1.45999)
+collision_layer = 2
 
 [node name="Push_module" parent="Character" instance=ExtResource("4_l3sam")]
 
@@ -89,3 +113,37 @@ use_collision = true
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.0866211, -0.519897)
 size = Vector3(5, 0.5, 8.156)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34168, -0.150911, -11.3096)
+freeze = true
+freeze_mode = 1
+
+[node name="bariera" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34168, 2.09247, 0)
+mesh = SubResource("BoxMesh_eg2li")
+skeleton = NodePath("../../Area3D")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34168, 2.09247, 0)
+shape = SubResource("ConcavePolygonShape3D_68w1v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_yxbmo")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.2874)
+collision_mask = 2
+script = ExtResource("5_id0ww")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_ck52i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0664976, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_eg2li")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

@@ -38,6 +38,12 @@ size_flags_vertical = 3
 theme_override_constants/h_separation = 60
 text = "3d platformer level example"
 
+[node name="2d_isometric_btn2" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 60
+text = "3d platformer level example"
+
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 layout_direction = 2
 layout_mode = 0
@@ -87,3 +93,4 @@ text = "Examples //:"
 
 [connection signal="button_down" from="PanelContainer/VBoxContainer/2d_pltfrm_btn" to="." method="_on_2d_pltfrm_btn_button_down"]
 [connection signal="button_down" from="PanelContainer/VBoxContainer/3d_pltfrm_btn" to="." method="_on_3d_pltfrm_btn_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/2d_isometric_btn2" to="." method="_on_3d_pltfrm_btn_button_down"]
