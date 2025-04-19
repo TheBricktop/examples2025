@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cs4drhmc1bql5"]
+[gd_scene load_steps=16 format=3 uid="uid://cs4drhmc1bql5"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_e18vq"]
 [ext_resource type="Texture2D" uid="uid://pe7a4weirj2g" path="res://textures/dark.png" id="2_08fdt"]
@@ -16,6 +16,10 @@ background_mode = 2
 sky = SubResource("Sky_2iust")
 tonemap_mode = 1
 ssao_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_wuiqu"]
+vertices = PackedVector3Array(-5.11947, 0.5, -5.5, -4.86947, 0.5, -10.25, -5.61947, 0.75, -10.5, -5.61947, 0.75, -14.25, -13.6195, 3.75, -14.25, -13.6195, 3.75, -5.5, -4.61947, 2.5, -14.25, -4.61947, 2.5, -11.5, -1.36947, 2.5, -11.5, -1.36947, 2.5, -14.25, -4.61947, 0.5, -5.25, -0.619474, 0.5, -10.25, 24.3805, 0.5, 24.5, 24.3805, 0.5, -4.5, 4.88053, 0.5, -4.5, -4.61947, 0.5, 24.5, 4.63053, 0.5, -14.25, -0.369474, 0.5, -14.25)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 5, 4), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(0, 1, 10), PackedInt32Array(10, 1, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(11, 17, 16), PackedInt32Array(16, 14, 11), PackedInt32Array(11, 14, 10), PackedInt32Array(10, 14, 15)]
 
 [sub_resource type="Gradient" id="Gradient_ur0vy"]
 colors = PackedColorArray(0, 0.476245, 0.0193456, 1, 0.360494, 0.612721, 0.119744, 1)
@@ -73,33 +77,36 @@ transform = Transform3D(0.87959, -0.436605, 0.188936, 0, 0.397148, 0.917755, -0.
 light_energy = 2.0
 shadow_enabled = true
 
-[node name="terrain" type="Node3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_wuiqu")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="terrain"]
+[node name="terrain" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 10)
 use_collision = true
 size = Vector3(30, 1, 30)
 material = SubResource("StandardMaterial3D_67ysu")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="terrain"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -10)
 use_collision = true
 size = Vector3(10, 1, 10)
 material = SubResource("StandardMaterial3D_gomnb")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="terrain"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.8, -13)
 use_collision = true
 size = Vector3(4, 0.5, 4)
 material = SubResource("StandardMaterial3D_gomnb")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="terrain"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/terrain"]
 transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0, 1, -9.5, 1.2, -10)
 use_collision = true
 size = Vector3(10, 1, 10)
 material = SubResource("StandardMaterial3D_u0sbk")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="terrain"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3, -15.5)
 use_collision = true
 size = Vector3(19, 8, 1)

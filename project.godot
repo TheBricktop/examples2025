@@ -22,10 +22,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneLoader="*res://scenes/scene_loader.tscn"
+Global="*res://global.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/markdown_book/plugin.cfg", "res://addons/markdownlabel/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
 [input]
 
@@ -41,3 +42,4 @@ sprint={
 3d_physics/layer_1="world"
 2d_physics/layer_2="player"
 3d_physics/layer_2="player"
+3d_physics/layer_4="interactable"

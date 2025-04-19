@@ -1,8 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://baddssbwx362r"]
+[gd_scene load_steps=27 format=3 uid="uid://baddssbwx362r"]
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_iy1n5"]
 [ext_resource type="PackedScene" uid="uid://cg2sjyeu51ma1" path="res://addons/primitives/push_module.tscn" id="4_l3sam"]
+[ext_resource type="Script" path="res://scenes/laduj.gd" id="4_shj0h"]
 [ext_resource type="Script" path="res://scenes/drzwi.gd" id="5_id0ww"]
+[ext_resource type="PackedScene" uid="uid://bqjrvqmcsq7vd" path="res://scripts/interactable.tscn" id="5_ig02o"]
+[ext_resource type="Script" path="res://scenes/drzwi-co.gd" id="6_l8ru1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hss0h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -13,6 +16,7 @@ sky_material = SubResource("ProceduralSkyMaterial_hss0h")
 
 [sub_resource type="Environment" id="Environment_rninh"]
 background_mode = 2
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_v3osn")
 tonemap_mode = 2
 glow_enabled = true
@@ -82,6 +86,72 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_ck52i"]
 size = Vector3(2.90869, 4.32861, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5l125"]
+size = Vector3(1, 2.74792, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bvfx6"]
+size = Vector3(0.1, 2, 1)
+
+[sub_resource type="Animation" id="Animation_mdq5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../WorldEnvironment:environment:background_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_a14cd"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../WorldEnvironment:environment:background_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_it55d"]
+_data = {
+"RESET": SubResource("Animation_mdq5x"),
+"new_animation": SubResource("Animation_a14cd")
+}
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -145,5 +215,31 @@ shape = SubResource("BoxShape3D_ck52i")
 transform = Transform3D(1, 0, 0, 0, 0.0664976, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_eg2li")
 
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+collision_mask = 2
+script = ExtResource("4_shj0h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.873962, 0)
+shape = SubResource("BoxShape3D_5l125")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area3D2"]
+
+[node name="Interactable" parent="." instance=ExtResource("5_ig02o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1915, 1.81121, -3.99098)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 1.2, 0)
+mesh = SubResource("BoxMesh_bvfx6")
+script = ExtResource("6_l8ru1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MeshInstance3D2"]
+libraries = {
+"": SubResource("AnimationLibrary_it55d")
+}
+
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
+[connection signal="body_entered" from="Area3D2" to="Area3D2" method="_on_body_entered"]
+[connection signal="on_interact" from="Interactable" to="MeshInstance3D2" method="_on_interactable_on_interact"]

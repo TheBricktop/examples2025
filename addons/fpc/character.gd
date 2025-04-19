@@ -82,6 +82,7 @@ extends CharacterBody3D
 @export var gravity_enabled : bool = true
 
 @onready var mesh: MeshInstance3D = $Mesh
+@onready var interact_ray: RayCast3D = $Head/interact_ray
 
 
 # Member variables
@@ -158,6 +159,12 @@ func change_reticle(reticle): # Yup, this function is kinda strange
 
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		if interact_ray.is_colliding():
+			var col = interact_ray.get_collider()
+			if col is Interactable:
+				col.interact()
+			
 	# Big thanks to github.com/LorenzoAncora for the concept of the improved debug values
 	current_speed = Vector3.ZERO.distance_to(get_real_velocity())
 	$UserInterface/DebugPanel.add_property("Speed", snappedf(current_speed, 0.001), 1)

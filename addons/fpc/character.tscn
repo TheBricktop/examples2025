@@ -465,6 +465,10 @@ autoplay = "new_animation"
 [node name="Camera" type="Camera3D" parent="Head/SpringArm3D"]
 near = 0.51
 
+[node name="interact_ray" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 8
+
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
