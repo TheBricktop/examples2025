@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c32w723igo6a7"]
 
-[ext_resource type="Script" path="res://addons/primitives/box_3d_rb.gd" id="1_ml2ru"]
+[ext_resource type="Script" uid="uid://csp2en2bisr0c" path="res://addons/primitives/box_3d_rb.gd" id="1_ml2ru"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cnpig"]
 size = Vector3(3.65, 1, 2.665)

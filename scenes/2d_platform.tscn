@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://bvhoe66xinbg5"]
+[gd_scene load_steps=12 format=4 uid="uid://bvhoe66xinbg5"]
 
 [ext_resource type="Texture2D" uid="uid://vecy7kldwbvo" path="res://art/kenney_pixel-platformer/Tilemap/tilemap-backgrounds.png" id="1_ynbgp"]
 [ext_resource type="Texture2D" uid="uid://bu1q2wjt5m7p8" path="res://art/kenney_pixel-platformer/Tilemap/tilemap.png" id="2_fyjb6"]
 [ext_resource type="PackedScene" uid="uid://dsshpxxdasln2" path="res://scenes/player.tscn" id="3_3t3ci"]
 [ext_resource type="Texture2D" uid="uid://dpyeydg3mv8m2" path="res://art/kenney_pixel-platformer/Tiles/Characters/tile_0004.png" id="4_qiehx"]
+[ext_resource type="Script" uid="uid://ch0w1kpy5uymj" path="res://scenes/Interact_2d.gd" id="5_1lj5n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_erk35"]
 texture = ExtResource("1_ynbgp")
@@ -407,6 +408,8 @@ texture = ExtResource("4_qiehx")
 
 [node name="Trigger2d" type="Area2D" parent="."]
 position = Vector2(-171, 6)
+collision_mask = 2
+script = ExtResource("5_1lj5n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger2d"]
 shape = SubResource("RectangleShape2D_uynh3")
@@ -419,3 +422,5 @@ text = "Interact"
 label_settings = SubResource("LabelSettings_j6mlk")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="body_entered" from="Trigger2d" to="Trigger2d" method="_on_body_entered"]

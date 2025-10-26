@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://cso4f2iyuxpmc" path="res://demo/assets/materials/M_crystal_purple.tres" id="6_s6twx"]
 [ext_resource type="Texture2D" uid="uid://br7bfxcxh60df" path="res://demo/assets/textures/rock030_alb_ht.png" id="7_pqaf8"]
 [ext_resource type="Texture2D" uid="uid://cr72kjil43vgj" path="res://demo/assets/textures/rock030_nrm_rgh.png" id="8_hh7se"]
-[ext_resource type="Script" path="res://demo/src/CaveEntrance.gd" id="9_fn2ke"]
+[ext_resource type="Script" uid="uid://duukdsfweqvs" path="res://demo/src/CaveEntrance.gd" id="9_fn2ke"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0v0nf"]
 transparency = 1

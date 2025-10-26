@@ -3,4 +3,4 @@ extends Node3D
 
 # Ładuje pierwszą scene
 func _ready() -> void:
-	SceneLoader.change_scene(firstScene)
+	get_tree().change_scene_to_packed(firstScene)

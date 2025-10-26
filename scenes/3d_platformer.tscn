@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_iy1n5"]
 [ext_resource type="PackedScene" uid="uid://cg2sjyeu51ma1" path="res://addons/primitives/push_module.tscn" id="4_l3sam"]
-[ext_resource type="Script" path="res://scenes/laduj.gd" id="4_shj0h"]
-[ext_resource type="Script" path="res://scenes/drzwi.gd" id="5_id0ww"]
+[ext_resource type="Script" uid="uid://b57km12i1hux8" path="res://scenes/laduj.gd" id="4_shj0h"]
+[ext_resource type="Script" uid="uid://drq7vleivtgrp" path="res://scenes/drzwi.gd" id="5_id0ww"]
 [ext_resource type="PackedScene" uid="uid://bqjrvqmcsq7vd" path="res://scripts/interactable.tscn" id="5_ig02o"]
-[ext_resource type="Script" path="res://scenes/drzwi-co.gd" id="6_l8ru1"]
+[ext_resource type="Script" uid="uid://you27qamaw3p" path="res://scenes/drzwi-co.gd" id="6_l8ru1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hss0h"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -79,8 +79,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yxbmo"]
 _data = {
-"RESET": SubResource("Animation_b5syo"),
-"otwieranie": SubResource("Animation_k0l0t")
+&"RESET": SubResource("Animation_b5syo"),
+&"otwieranie": SubResource("Animation_k0l0t")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ck52i"]
@@ -148,8 +148,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_it55d"]
 _data = {
-"RESET": SubResource("Animation_mdq5x"),
-"new_animation": SubResource("Animation_a14cd")
+&"RESET": SubResource("Animation_mdq5x"),
+&"new_animation": SubResource("Animation_a14cd")
 }
 
 [node name="Node3D" type="Node3D"]

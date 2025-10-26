@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dsshpxxdasln2"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_w8agy"]
+[ext_resource type="Script" uid="uid://cfepskvk7f5on" path="res://scenes/player.gd" id="1_w8agy"]
 [ext_resource type="Texture2D" uid="uid://xq64vqjh4j3a" path="res://art/kenney_pixel-platformer/Tilemap/tilemap-characters.png" id="2_3n554"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nreb6"]
@@ -259,10 +259,10 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_18r7h"]
 _data = {
-"RESET": SubResource("Animation_aapes"),
-"idle": SubResource("Animation_1xcnj"),
-"jump": SubResource("Animation_kb7ma"),
-"walk": SubResource("Animation_tpf5p")
+&"RESET": SubResource("Animation_aapes"),
+&"idle": SubResource("Animation_1xcnj"),
+&"jump": SubResource("Animation_kb7ma"),
+&"walk": SubResource("Animation_tpf5p")
 }
 
 [sub_resource type="Curve" id="Curve_8p3i7"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://ckxab2at2kxj4"]
 
-[ext_resource type="Shader" path="res://scenes/dither_color.gdshader" id="1_20ysr"]
+[ext_resource type="Shader" uid="uid://b32g744ix5yef" path="res://scenes/dither_color.gdshader" id="1_20ysr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m4pwp"]
 shader = ExtResource("1_20ysr")
-shader_parameter/fog_color = null
+shader_parameter/fog_color = Color(0, 0, 0, 1)
 shader_parameter/resolution_downsampling = 8.0
 shader_parameter/bit_depth = 8.0
 

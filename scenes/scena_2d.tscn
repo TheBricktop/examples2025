@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bu7ac0ktm2dg5"]
 
 [ext_resource type="Texture2D" uid="uid://ds4rnuhypjs8a" path="res://addons/shaderV/examples/godot_logo.png" id="1_34btx"]
-[ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="1_khnil"]
+[ext_resource type="Script" uid="uid://dpal7i7tkv0f4" path="res://scenes/character_body_2d.gd" id="1_khnil"]
 [ext_resource type="Texture2D" uid="uid://dukgbairam5vc" path="res://addons/shaderV/shaderV_icon.png" id="3_d7jvc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk5ep"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://crcq0w6gnoujk"]
 
-[ext_resource type="Script" path="res://scenes/rotate_pivot.gd" id="1_st12x"]
+[ext_resource type="Script" uid="uid://bkimbs1rud8jf" path="res://scenes/rotate_pivot.gd" id="1_st12x"]
 [ext_resource type="PackedScene" uid="uid://dhryjh8kua87w" path="res://scenes/main_menu.tscn" id="2_mynvo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sfb6r"]
@@ -25,19 +25,19 @@ colors = PackedColorArray(0, 0.26907, 0, 1, 0.579203, 0.712759, 0.269307, 1)
 noise_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6oodd"]
+noise = SubResource("FastNoiseLite_iu6k2")
+color_ramp = SubResource("Gradient_v5fna")
 seamless = true
 seamless_blend_skirt = 1.0
-color_ramp = SubResource("Gradient_v5fna")
-noise = SubResource("FastNoiseLite_iu6k2")
 
 [sub_resource type="Gradient" id="Gradient_brkkt"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p3u7x"]
-seamless = true
-seamless_blend_skirt = 1.0
-as_normal_map = true
-color_ramp = SubResource("Gradient_brkkt")
 noise = SubResource("FastNoiseLite_iu6k2")
+color_ramp = SubResource("Gradient_brkkt")
+seamless = true
+as_normal_map = true
+seamless_blend_skirt = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iveg6"]
 albedo_texture = SubResource("NoiseTexture2D_6oodd")
@@ -45,8 +45,9 @@ normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_p3u7x")
 uv1_triplanar = true
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_drwl5"]
-top_radius = 5.45
+[sub_resource type="SphereMesh" id="SphereMesh_j4aoe"]
+radius = 9.058
+height = 2.449
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at62t"]
 metallic = 1.0
@@ -86,9 +87,9 @@ transform = Transform3D(0.917766, -0.218595, 0.331544, 0, 0.834869, 0.550449, -0
 [node name="map" type="Node3D" parent="."]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.99031, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.259643, 0)
 material_override = SubResource("StandardMaterial3D_iveg6")
-mesh = SubResource("CylinderMesh_drwl5")
+mesh = SubResource("SphereMesh_j4aoe")
 skeleton = NodePath("../../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="map"]
